@@ -41,6 +41,35 @@ app.get('/breads', (req, res) => {
   res.sendFile(path.join(__dirname, '../breads.html'));
 });
 
+// Check Database Connection
+
+app.get('/test-db-connection', async (req, res) => {
+    let connection;
+    try {
+      connection = await oracledb.getConnection({
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        connectString: process.env.DB_CONNECT_STRING
+      });
+  
+      // If the connection is successful, send a success message
+      res.send('Connected to DB successfully!');
+    } catch (err) {
+      // If there's an error, send details of the error
+      res.status(500).send(`DB connection failed: ${err.message}`);
+    } finally {
+      if (connection) {
+        try {
+          // Always close connections
+          await connection.close();
+        } catch (err) {
+          console.error('Error closing connection', err);
+        }
+      }
+    }
+  });
+  
+
 // Example API endpoint for getting products from the database
 app.get('/api/products', async (req, res) => {
   let connection;
