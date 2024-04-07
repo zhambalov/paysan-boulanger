@@ -22,8 +22,8 @@
                 <a href="cakes.html">Cakes</a>
             </nav>
             <div class="header-right">
-                <a class="icon-cart" id="cartIcon">Cart</a>
-            </div>            
+                <div id="cartIcon">Cart Icon Here</div>
+            </div>           
         </div>
     </header>
     
@@ -33,27 +33,39 @@
             <h2>Pastries</h2> 
         </div>
         <section class="products">
+
             <div class="product">
                 <img src="/images/butter_croissant.jpeg" alt="Butter Croissant">
                 <div class="product-description">
                     <h3>Butter Croissant</h3>
                     <p class="price">$3.75</p>
                 </div>
-                <button class="add-to-cart-btn" data-product-id="butter_croissant" data-item-name="Butter Croissant" data-item-price="3.75">Add to Cart</button>            </div>
+                <button class="add-to-cart-btn" data-product-id="1" onclick="addToCart(1, 1)">Add to Cart</button>
+
+          
+            </div>
+
             <div class="product">
                 <img src="/images/chocolate_croissant.jpeg" alt="Chocolate Croissant">
                 <div class="product-description">
                     <h3>Chocolate Croissant</h3>
                     <p class="price">$4.5</p>
                 </div>
-                <button class="add-to-cart-btn" data-product-id="butter_croissant" data-item-name="Butter Croissant" data-item-price="3.75">Add to Cart</button>            </div>
+                <button class="add-to-cart-btn" data-product-id="2" onclick="addToCart(2, 1)">Add to Cart</button>
+
+
+            </div>
+
             <div class="product">
                 <img src="/images/raspberry_croissant.jpeg" alt="Raspberry Croissant">
                 <div class="product-description">
                     <h3>Raspberry Croissant</h3>
                     <p class="price">$6</p>
                 </div>
-                <button class="add-to-cart-btn" data-product-id="butter_croissant" data-item-name="Butter Croissant" data-item-price="3.75">Add to Cart</button>            </div>
+                <button class="add-to-cart-btn" data-product-id="3" onclick="addToCart(3, 1)">Add to Cart</button>
+
+
+            </div>
         </section>
         
         <div class="cartTab">
@@ -88,62 +100,6 @@
         <p>Contact</p>
         <!-- Social media links -->
     </footer>
-
-
-    <script>
-        // Get the modal
-        var modal = document.getElementById('loginModal');
-
-        // Function to open the modal
-        function openModal() {
-            modal.style.display = 'block';
-        }
-
-        // Function to close the modal
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        // Ensure the DOM is fully loaded before trying to access the element
-        window.addEventListener('DOMContentLoaded', (event) => {
-            // Handle the form submission
-            document.getElementById('loginForm').onsubmit = function(event) {
-                event.preventDefault();
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-
-                // Add logic here to send login information to server
-                // Example using fetch:
-                fetch('/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ username, password })
-                })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw new Error('Login failed');
-                })
-                .then(result => {
-                    closeModal();
-                    console.log('Login Success:', result);
-                })
-                .catch(error => {
-                    console.error('Login Error:', error);
-                });
-            };
-        });
-    </script>
 
 <script type="module" src="/js/script.js"></script>
 </body>
