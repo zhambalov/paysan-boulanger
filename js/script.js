@@ -12,13 +12,13 @@ async function addToCart(productId, itemName, itemPrice) {
         });
 
         if (!response.ok) {
-            throw new Error('Error adding item to cart');
+            throw new Error(`Error adding item to cart: ${response.statusText}`);
         }
 
         // Update UI or show a success message
         console.log('Item added to cart successfully');
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error adding item to cart:', error);
     }
 }
 

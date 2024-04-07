@@ -80,31 +80,39 @@ app.get('/api/products', async (req, res) => {
   }
 });
 
-// Add Item to Cart
 app.post('/api/cart/add', async (req, res) => {
-  const { cartId, productId, quantity } = req.body;
-  let connection;
-  try {
-    connection = await oracledb.getConnection(dbConfig);
-    // Note: Adjust SQL syntax for Oracle. Example assumes 'MERGE INTO' or handling logic in PL/SQL block.
-    const sql = `BEGIN
-                   -- Procedure or PL/SQL block to add/update cart item
-                 END;`;
-    const result = await connection.execute(sql, { cartId, productId, quantity }, { autoCommit: true });
-    res.json({ success: true, message: 'Item added to cart', data: result });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error adding item to cart');
-  } finally {
-    if (connection) {
-      try {
-        await connection.close();
-      } catch (err) {
-        console.error('Error closing connection', err);
+    const { productId, quantity } = req.body;
+    const userId = req.user_id; // Assuming you have the user ID available after authentication
+    let connection;
+    try {
+      connection = await oracledb.getConnection(dbConfig);
+      const sql = `
+        INSERT INTO bakery_cart_items (cart_id, product_id, quantity)
+        SELECT cart_id, :productId, :quantity
+        FROM bakery_cart
+        WHERE user_id = :userId
+      `;
+      const bindVars = {
+        productId: productId,
+        quantity: quantity,
+        userId: userId
+      };
+      await connection.execute(sql, bindVars, { autoCommit: true });
+      res.json({ success: true, message: 'Item added to cart successfully' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Error adding item to cart');
+    } finally {
+      if (connection) {
+        try {
+          await connection.close();
+        } catch (err) {
+          console.error('Error closing connection', err);
+        }
       }
     }
-  }
-});
+  });
+  
 
 // Additional cart functionality endpoints would go here...
 
