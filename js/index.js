@@ -95,7 +95,25 @@ app.post('/api/cart/add', async (req, res) => {
   }
 });
 
-// Additional cart functionality endpoints would go here...
+app.get('/api/cart', async (req, res) => {
+  let connection;
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+    const result = await connection.execute(`SELECT * FROM bakery_cart_items`);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching items from cart');
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+});
 
 // The server starts listening on the specified port
 app.listen(PORT, () => {

@@ -1,3 +1,5 @@
+console.log("JS Connected!");
+
 // Function to add item to cart
 async function addToCart(productId, itemName, itemPrice) {
     const quantity = 1; // You can adjust this if needed
