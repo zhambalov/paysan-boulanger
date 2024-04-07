@@ -1,0 +1,296 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat;
+    background: #fff;
+    color: #333;
+}
+
+main{
+    padding-bottom: 200px;
+}
+/* Header styles */
+
+.category-header {
+    font-size: 2em; /* Large font size for the category header */
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center; /* Center the category title */
+    margin: 40px 0; /* Add some vertical space around the header */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    background: #fff; /* Matching the background with the body */
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    flex-grow: 1;
+    text-align: left; /* Aligns the logo to the left */
+}
+
+.main-nav {
+    padding-right: 145px;
+    justify-content: center; 
+}
+
+.main-nav a {
+    margin: 0 15px; /* Spacing between nav links */
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.header-right {
+    flex-grow: 1;
+    text-align: right; /* Aligns the search and other icons to the right */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+
+
+/* Products Grid */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers items horizontally */
+    gap: 55px;
+    padding: 20px;
+}
+
+.product {
+    flex: 0 1 22%; /* Adjust the flex-basis to make items bigger */
+    max-width: 220px; /* Increase the max width for size */
+    text-align: center; /* Centers the content inside each product card */
+    padding: 15px; /* Adjust padding as needed */
+    background: #fff;
+    border: 1px solid #eee;
+    margin-bottom: 20px; /* Margin at the bottom of each product card */
+    border-radius: 4px; /* Optional: rounds the corners */
+}
+
+.product img {
+    width: 100%; /* Ensure the width always fits the container */
+    height: 220px; /* Set height equal to width for square images */
+    object-fit: cover; /* This will crop the image to fill the box */
+    border-radius: 4px; /* Optional: rounds the corners of the image */
+}
+
+.product-description {
+    display: flex;
+    justify-content: space-between; /* Places name and price on the same line with space between */
+    align-items: center;
+    width: 100%; /* Ensure the description uses the full width available */
+}
+
+.product h3 {
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Ensures the overflow text is hidden */
+    text-overflow: ellipsis; /* Adds an ellipsis to text that's too long */
+    padding: 4px 0;
+    font-size: 0.9em; /* Adjust the font size as needed */
+}
+
+.product h3, 
+.product .price {
+    margin: 0;
+    padding: 4px 0; /* Adds padding above and below the title/price */
+}
+
+.product .price {
+    font-weight: 400;
+    font-size: 0.9em; /* Adjust the font size as needed */
+    color: #808080; /* Grey color for the price */
+    margin-left: 10px; /* Space between name and price */
+}
+
+.product button {
+    background-color: white;
+    box-shadow: none !important; /* Ensure no shadow */
+    padding: 8px 16px; /* Padding around the text */
+    font-weight: 400;
+    font-size: 0.8em; /* Smaller font size for the button */
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    border: 0.1px solid white;
+    font-family: Montserrat;
+}
+
+
+.product button:hover {
+    background-color: #333; /* Changes background on hover */
+    color: #fff; /* Changes text color on hover */
+}
+
+/* Adjustments for different screen sizes */
+@media (max-width: 1200px) {
+    .product {
+        flex: 0 1 30%; /* Adjust the flex-basis for fewer items per row */
+        max-width: 260px; /* Adjust max-width accordingly */
+    }
+}
+
+@media (max-width: 768px) {
+    .product {
+        flex: 0 1 45%; /* Adjust the flex-basis for fewer items per row */
+        max-width: 300px; /* Adjust max-width accordingly */
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        flex: 0 1 90%; /* Adjust the flex-basis for fewer items per row */
+        max-width: 300px; /* Adjust max-width accordingly */
+    }
+}
+
+
+
+/* Footer Styles */
+footer {
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 5px 0;
+    width: 100%;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1200px) {
+    .product {
+        width: calc(33% - 20px); /* 3 items per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .product {
+        width: calc(50% - 20px); /* 2 items per row */
+    }
+
+    .main-nav,
+    .header-right {
+        display: none; /* Hide for smaller screens, assuming you'll have a mobile menu */
+    }
+
+    .logo {
+        flex-basis: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: calc(100% - 20px); /* 1 item per row */
+    }
+}
+
+
+/* Cart Tab */
+
+.cartTab {
+    width: 300px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -300px; /* Start off-screen to the right */
+    transition: right 0.3s ease-in-out; /* Smooth transition for sliding effect */
+    box-shadow: 0 0 50px #ccc;
+}
+
+body.showCart .cartTab {
+    right: 1000;
+}
+
+.cartTab h3 {
+    margin: 0;
+    padding: 20px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.cartItems {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.cartItems li {
+    padding: 10px;
+    border-bottom: 1px solid #666;
+}
+
+.cartTotal {
+    font-weight: bold;
+}
+
+.btn {
+    display: flex;
+}
+
+.btn button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #fff;
+    font-family: Montserrat;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* The Modal (background) */
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
