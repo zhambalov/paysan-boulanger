@@ -40,25 +40,6 @@ app.get('/breads', (req, res) => {
   res.sendFile(path.join(__dirname, '../breads.html'));
 });
 
-// Check Database Connection
-app.get('/test-db-connection', async (req, res) => {
-  let connection;
-  try {
-    connection = await oracledb.getConnection(dbConfig);
-    res.send('Connected to DB successfully!');
-  } catch (err) {
-    res.status(500).send(`DB connection failed: ${err.message}`);
-  } finally {
-    if (connection) {
-      try {
-        await connection.close();
-      } catch (err) {
-        console.error('Error closing connection', err);
-      }
-    }
-  }
-});
-
 // Example API endpoint for getting products from the database
 app.get('/api/products', async (req, res) => {
   let connection;
@@ -80,39 +61,39 @@ app.get('/api/products', async (req, res) => {
   }
 });
 
+// Add Item to Cart
 app.post('/api/cart/add', async (req, res) => {
-    const { productId, quantity } = req.body;
-    const userId = req.user_id; // Assuming you have the user ID available after authentication
-    let connection;
-    try {
-      connection = await oracledb.getConnection(dbConfig);
-      const sql = `
-        INSERT INTO bakery_cart_items (cart_id, product_id, quantity)
-        SELECT cart_id, :productId, :quantity
-        FROM bakery_cart
-        WHERE user_id = :userId
-      `;
-      const bindVars = {
-        productId: productId,
-        quantity: quantity,
-        userId: userId
-      };
-      await connection.execute(sql, bindVars, { autoCommit: true });
-      res.json({ success: true, message: 'Item added to cart successfully' });
-    } catch (err) {
-      console.error(err);
-      res.status(500).send('Error adding item to cart');
-    } finally {
-      if (connection) {
-        try {
-          await connection.close();
-        } catch (err) {
-          console.error('Error closing connection', err);
-        }
+  const { productId, quantity } = req.body;
+  const userId = req.user_id; // Assuming you have the user ID available after authentication
+  let connection;
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+    const sql = `
+      INSERT INTO bakery_cart_items (cart_id, product_id, quantity)
+      SELECT cart_id, :productId, :quantity
+      FROM bakery_cart
+      WHERE user_id = :userId
+    `;
+    const bindVars = {
+      productId: productId,
+      quantity: quantity,
+      userId: userId
+    };
+    await connection.execute(sql, bindVars, { autoCommit: true });
+    res.json({ success: true, message: 'Item added to cart successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error adding item to cart');
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error('Error closing connection', err);
       }
     }
-  });
-  
+  }
+});
 
 // Additional cart functionality endpoints would go here...
 
