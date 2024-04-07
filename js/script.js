@@ -1,35 +1,42 @@
-// Initialize an empty array to store cart items
-let cartItems = [];
+// Function to add item to cart
+async function addToCart(productId, itemName, itemPrice) {
+    const quantity = 1; // You can adjust this if needed
 
-// Function to add items to the cart
-function addToCart(itemId, itemName, itemPrice) {
-    // Create a new object representing the item
-    const newItem = {
-        id: itemId,
-        name: itemName,
-        price: itemPrice
-    };
+    try {
+        const response = await fetch('/api/cart/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ productId, quantity }),
+        });
 
-    // Add the item to the cartItems array
-    cartItems.push(newItem);
+        if (!response.ok) {
+            throw new Error('Error adding item to cart');
+        }
 
-    // Update the cart display
-    updateCartDisplay();
+        // Update UI or show a success message
+        console.log('Item added to cart successfully');
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
-// Function to update the cart display
-function updateCartDisplay() {
-    const cartList = document.getElementById('cart-items');
+// Function to fetch cart items and update UI
+async function fetchCartItems() {
+    try {
+        const response = await fetch('/api/cart');
 
-    // Clear previous items from the list
-    cartList.innerHTML = '';
+        if (!response.ok) {
+            throw new Error('Error fetching cart items');
+        }
 
-    // Loop through each item in the cart and add it to the list
-    cartItems.forEach(item => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${item.name} - $${item.price.toFixed(2)}`;
-        cartList.appendChild(listItem);
-    });
+        const cartItems = await response.json();
+        // Update UI with cart items
+        console.log('Cart Items:', cartItems);
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
 // Function to toggle the cart visibility
@@ -37,3 +44,6 @@ function toggleCart() {
     const cartTab = document.querySelector('.cartTab');
     document.body.classList.toggle('showCart');
 }
+
+// Initial fetch of cart items when the page loads
+fetchCartItems();
