@@ -8,10 +8,11 @@ const PORT = process.env.PORT || 80;
 
 // Oracle DB connection parameters
 const dbConfig = {
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  connectString: process.env.DB_CONNECT_STRING // Your connection string
-};
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    connectString: '199.212.26.208:1521/SQLD'
+  };
+  
 
 oracledb.autoCommit = true; // Set this to auto commit if that is your desired behavior
 
