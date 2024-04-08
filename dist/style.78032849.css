@@ -1,0 +1,195 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif; /* Added fallback font */
+    background: #fff;
+    color: #333;
+}
+
+main {
+    padding-bottom: 200px;
+}
+
+/* Header styles */
+.category-header {
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    background: #fff;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo, .header-right {
+    flex-grow: 1;
+    text-align: left; /* Logo to the left */
+}
+
+.header-right {
+    text-align: right; /* Aligns the search and other icons to the right */
+    justify-content: flex-end;
+}
+
+.main-nav {
+    padding-right: 145px;
+    justify-content: center; 
+}
+
+.main-nav a, .header-right a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+/* Products Grid */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 55px;
+    padding: 20px;
+}
+
+.product {
+    flex: 0 1 22%;
+    max-width: 220px;
+    text-align: center;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.product img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.product h3, .product .price {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 4px 0;
+    font-size: 0.9em;
+}
+
+.product .price {
+    font-weight: 400;
+    color: #808080;
+    margin-left: 10px;
+}
+
+.product button {
+    background-color: white;
+    box-shadow: none !important;
+    padding: 8px 16px;
+    font-weight: 400;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border: 0.1px solid white;
+}
+
+.product button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .product {
+        flex: 0 1 30%;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product {
+        flex: 0 1 45%;
+        max-width: 300px;
+    }
+    .main-nav, .header-right {
+        display: none; /* Hide for smaller screens */
+    }
+    .logo {
+        flex-basis: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        flex: 0 1 90%;
+        max-width: 300px;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 5px 0;
+    width: 100%;
+}
+
+/* Cart Tab */
+.cartTab {
+    width: 300px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -300px; /* Adjusted to start off-screen */
+    transition: right 0.3s ease-in-out;
+    box-shadow: 0 0 50px #ccc;
+}
+
+body.showCart .cartTab {
+    right: 0; /* Adjusted to slide in correctly */
+}
+
+.btn button {
+    flex: 1;
+    padding: 10px; /* Provides padding around the button text */
+    border: none; /* Removes the default border */
+    background-color: #fff; /* Sets the background color */
+    font-family: Montserrat; /* Ensures font consistency */
+    font-weight: 500; /* Makes the font slightly bolder */
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+    transition: background-color 0.3s, color 0.3s; /* Adds a smooth transition for the hover effect */
+}
+
+.btn button:hover {
+    background-color: #333; /* Changes the background color on hover */
+    color: #fff; /* Changes the text color on hover */
+}
+
+
+/*# sourceMappingURL=/style.78032849.css.map */

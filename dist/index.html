@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paysan Boulanger</title>
+    <link rel="stylesheet" href="/style.78032849.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script src="/style.78032849.js"></script></head>
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <div class="logo">
+                <h3>Paysan Boulanger</h3>
+            </div>
+            <nav class="main-nav">
+                <a href="/breads.html">Breads</a>
+                <a href="/index.html">Pastries</a>
+                <a href="/cakes.html">Cakes</a>
+            </nav>
+            <div class="header-right">
+                <div id="cartIcon">Cart Icon Here</div>
+            </div>           
+        </div>
+    </header>
+    
+    
+    <main>
+        <div class="category-header">
+            <h2>Pastries</h2> 
+        </div>
+        <section class="products">
+
+            <div class="product">
+                <img src="/butter_croissant.8ed3202f.jpeg" alt="Butter Croissant">
+                <div class="product-description">
+                    <h3>Butter Croissant</h3>
+                    <p class="price">$3.75</p>
+                </div>
+                <button class="add-to-cart-btn" data-product-id="1">Add to Cart</button>
+
+          
+            </div>
+
+            <div class="product">
+                <img src="/chocolate_croissant.01c1de65.jpeg" alt="Chocolate Croissant">
+                <div class="product-description">
+                    <h3>Chocolate Croissant</h3>
+                    <p class="price">$4.5</p>
+                </div>
+                <button class="add-to-cart-btn" data-product-id="2">Add to Cart</button>
+
+
+            </div>
+
+            <div class="product">
+                <img src="/raspberry_croissant.6f240aa9.jpeg" alt="Raspberry Croissant">
+                <div class="product-description">
+                    <h3>Raspberry Croissant</h3>
+                    <p class="price">$6</p>
+                </div>
+                <button class="add-to-cart-btn" data-product-id="3" )"="">Add to Cart</button>
+
+
+            </div>
+        </section>
+        
+        <div class="cartTab">
+            <h3>Shopping Cart</h3>
+            <ul class="cartItems"></ul>
+            <div class="cartTotal">Total: <span class="totalPrice">$0.00</span></div>
+            <div class="btn">
+                <button class="close" "="">Close</button>
+                <button class="checkout" "="">Checkout</button>
+            </div>
+        </div>
+    </main>
+
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <form id="loginForm">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required="">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required="">
+            <button type="submit">Login</button>
+          </form>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Footer content here -->
+        <p>About Us</p>
+        <p>Contact</p>
+        <!-- Social media links -->
+    </footer>
+
+    <script src="/script.d573be0b.js"></script>
+</body>
+</html>

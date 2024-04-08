@@ -22,7 +22,7 @@
                 <a href="cakes.html">Cakes</a>
             </nav>
             <div class="header-right">
-                <div id="cartIcon">Cart Icon Here</div>
+                <div id="cartIcon">Cart</div>
             </div>           
         </div>
     </header>
@@ -38,9 +38,9 @@
                 <img src="/images/butter_croissant.jpeg" alt="Butter Croissant">
                 <div class="product-description">
                     <h3>Butter Croissant</h3>
-                    <p class="price">$3.75</p>
+                    <p class="price">$2.5</p>
                 </div>
-                <button class="add-to-cart-btn" data-product-id="1" onclick="addToCart(1, 1)">Add to Cart</button>
+                <button class="add-to-cart-btn" data-product-id="21">Add to Cart</button>
 
           
             </div>
@@ -51,7 +51,7 @@
                     <h3>Chocolate Croissant</h3>
                     <p class="price">$4.5</p>
                 </div>
-                <button class="add-to-cart-btn" data-product-id="2" onclick="addToCart(2, 1)">Add to Cart</button>
+                <button class="add-to-cart-btn" data-product-id="23" >Add to Cart</button>
 
 
             </div>
@@ -62,45 +62,113 @@
                     <h3>Raspberry Croissant</h3>
                     <p class="price">$6</p>
                 </div>
-                <button class="add-to-cart-btn" data-product-id="3" onclick="addToCart(3, 1)">Add to Cart</button>
-
-
+                <button class="add-to-cart-btn" data-product-id="22")">Add to Cart</button>
             </div>
         </section>
+
+        <div class="category-header">
+            <h2>Breads</h2>
+        </div>
+        <section class="products">
+            <div class="product">
+                <img src="images/bread.jpeg" alt="Bread">
+                <div class="product-description">
+                    <h3>Sourdough Loaf</h3>
+                    <p class="price">$8.25</p>
+                </div>
+                <button class="add-to-cart-btn" data-product-id="42">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/baguette.jpeg" alt="Baguette"> 
+                <div class="product-description">
+                    <h3>Baguette</h3>
+                    <p class="price">$4</p>
+                </div>
+                <button class="add-to-cart-btn" data-product-id="43">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/banana_bread.jpeg" alt="Banana Bread">
+                <div class="product-description">
+                    <h3>Banana Bread</h3>
+                    <p class="price">$13.5</p>
+                </div>
+                <button class="add-to-cart-btn" data-product-id="44">Add to Cart</button>
+            </div>
+        </section>
+
+        <div class="category-header">
+            <h2>Cakes</h2>
+        </div>
+        <section class="products">
+            <div class="product">
+                <img src="images/chocolate_cake.jpeg" alt="Chocolate Cake">
+                <div class="product-description">
+                    <h3>Chocolate Cake</h3>
+                    <p class="price">$26.5</p>
+                </div>
+                <button class="add-to-cart-btn" data-product-id="1">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/cheesecake.jpeg" alt="Cheesecake">
+                <div class="product-description">
+                    <h3>Meringue Cheesecake</h3>
+                    <p class="price">$26.5</p>
+                </div>
+                <button class="add-to-cart-btn" data-product-id="45">Add to Cart</button>
+            </div>
+        </section>  
         
         <div class="cartTab">
             <h3>Shopping Cart</h3>
             <ul class="cartItems"></ul>
             <div class="cartTotal">Total: <span class="totalPrice">$0.00</span></div>
             <div class="btn">
-                <button class="close" onclick="toggleCart()">Close</button>
-                <button class="checkout" onclick="checkout()">Checkout</button>
+                <button class="close"">Close</button>
+                <button class="checkout" id="checkoutButton">Checkout</button>
             </div>
         </div>
     </main>
 
+    <div id="successMessage"></div>
+
+    <div id="overlay" class="overlay"></div>
 
     <div id="loginModal" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal()">&times;</span>
-          <form id="loginForm">
-            <h2>Login</h2>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-          </form>
+            <span class="close" onclick="closeModal()">&times;</span>
+            <form id="loginForm">
+                <h2>Login</h2>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
         </div>
     </div>
+    
 
     <footer>
-        <!-- Footer content here -->
         <p>About Us</p>
         <p>Contact</p>
-        <!-- Social media links -->
     </footer>
 
-<script type="module" src="/js/script.js"></script>
+    <script>
+        window.onload = function() {
+            document.getElementById('loginModal').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        };
+    
+        function closeModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    
+        function login() {
+            closeModal(); 
+        }
+    </script>s
+
+    <script src="/js/script.js"></script>
 </body>
 </html>

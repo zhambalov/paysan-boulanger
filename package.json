@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "client": "parcel index.html",
+    "dev-fullstack": "concurrently \"npm run client\" \"npm run dev\""
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +18,10 @@
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
     "oracledb": "^6.4.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4",
+    "parcel": "^2.0.0"
   }
 }

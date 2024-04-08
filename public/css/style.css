@@ -159,34 +159,176 @@ footer {
     width: 100%;
 }
 
-/* Cart Tab */
 .cartTab {
-    width: 300px;
-    background-color: white;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    width: 250px;
+    position: fixed;
+    top: 50px; /* Adjust as needed */
+    right: 20px;
+    z-index: 100;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+.cartTab h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.cartItems {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+}
+
+.cartItems li {
+    padding: 10px 5px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.cartTotal {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.cartTotal .totalPrice {
+    float: right;
+}
+
+.cartTab .btn {
+    text-align: right;
+}
+
+.cartTab button {
+    padding: 5px 10px;
+    margin-top: 0px;
+    margin-right: 5px;
+    background-color: black; /* White background */
+    color: #333; /* Dark text color */
+    border: 1px solid #ccc; /* Light border for some definition */
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.hidden {
+    display: none;
+}
+
+.cartTab button:hover {
+    background-color: #333; /* Dark background on hover */
+    color: white; /* White text on hover */
+    border-color: #333; /* Dark border on hover */
+}
+
+.cartTab button.close {
+    background-color: white; /* Adjust color as needed */
+    font-size: 0.8em;
+}
+
+.cartTab button.checkout {
+    background-color: white; /* Adjust color as needed */
+    font-size: 0.8em;
+}
+
+
+
+/* Login Modal styles */
+#loginModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); /* Softer shadow for subtlety */
+    z-index: 9999;
+    padding: 30px; /* More padding for a better look */
+    width: auto; /* Adjust width based on content */
+    max-width: 400px; /* Maximum width to control the size on larger screens */
+}
+
+.overlay {
+    display: none;
     position: fixed;
     top: 0;
-    bottom: 0;
-    right: -300px; /* Adjusted to start off-screen */
-    transition: right 0.3s ease-in-out;
-    box-shadow: 0 0 50px #ccc;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
 
-body.showCart .cartTab {
-    right: 0; /* Adjusted to slide in correctly */
+/* Improved modal content spacing and alignment */
+.modal-content {
+    padding: 20px; /* Uniform padding */
+    text-align: left; /* Align text to the left for a more standard form appearance */
 }
 
-.btn button {
-    flex: 1;
-    padding: 10px; /* Provides padding around the button text */
-    border: none; /* Removes the default border */
-    background-color: #fff; /* Sets the background color */
-    font-family: Montserrat; /* Ensures font consistency */
-    font-weight: 500; /* Makes the font slightly bolder */
-    cursor: pointer; /* Changes the cursor to indicate it's clickable */
-    transition: background-color 0.3s, color 0.3s; /* Adds a smooth transition for the hover effect */
+/* Style for form elements */
+#loginForm h2 {
+    margin-bottom: 30px; /* Increase space below the header */
+    font-size: 1.5em; /* Make header larger */
 }
 
-.btn button:hover {
-    background-color: #333; /* Changes the background color on hover */
-    color: #fff; /* Changes the text color on hover */
+#loginForm label {
+    display: block; /* Make labels block for better control */
+    margin-bottom: .5em; /* Add space below the label */
+    color: #666; /* Lighten the text color for a modern look */
+    font-size: 0.9em; /* Adjust font size for labels */
+}
+
+#loginForm input[type=text],
+#loginForm input[type=password] {
+    width: calc(100% - 20px); /* Reduce width to create some space around the inputs */
+    padding: 10px; /* Add padding inside the inputs for a larger click area and visual appeal */
+    margin-bottom: 20px; /* Add more space below inputs */
+    border: 1px solid #ccc; /* Subtle border color */
+    border-radius: 4px; /* Rounded corners for the input fields */
+    font-size: 1em; /* Larger font size for readability */
+}
+
+/* Styling the buttons for better appearance */
+.login-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 30px; /* Larger padding for a bigger, more clickable area */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%; /* Full width button for a modern look */
+    font-size: 1em; /* Maintain font size for readability */
+    box-shadow: none; /* Remove any box-shadow if present */
+}
+
+/* Hover effect for buttons */
+.login-btn:hover {
+    background-color: #369946; /* A darker shade for hover state */
+    box-shadow: none; /* Ensure there is no box-shadow on hover */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px; /* Make the close button larger for better visibility */
+    cursor: pointer;
+    border: none; /* Remove borders for a cleaner look */
+    background: none; /* Transparent background */
+    padding: 0; /* Remove padding */
+}
+
+/* Make sure close button is visually distinct and has a hover effect */
+.close:hover {
+    color: #f44336; /* Change color on hover to indicate it's clickable */
 }
